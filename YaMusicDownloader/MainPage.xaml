@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="YaMusicDownloader.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0"
+                             Spacing="25">
+            <StackLayout x:Name="Account"
+                         Orientation="Horizontal"
+                         Spacing="15">
+                <Entry x:Name="TokenEntry"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="Ваш токен Яндекс"
+                       IsReadOnly="True" />
+                <Button x:Name="GetTokenBtn"
+                        Text="Получить токен"
+                        Clicked="GetToken" />
+            </StackLayout>
+            <StackLayout x:Name="Search"
+                         Spacing="15">
+                <Entry x:Name="SearchTitle"
+                       HorizontalOptions="FillAndExpand" />
+                <Button x:Name="SearchBtn"
+                        Text="Поиск"
+                        Clicked="SearchTrack"
+                        WidthRequest="150" />
+                <Button x:Name="DownloadLiked"
+                        Text="Скачать любимые треки"
+                        Clicked="DownloadLikedTracks"
+                        IsEnabled="False" />
+                <Button x:Name="DownloadCurrent"
+                        Text="Скачать текущий трек"
+                        Clicked="DownloadCurrentTrack"
+                        IsEnabled="False" />
+            </StackLayout>
+            <StackLayout x:Name="DownloadingTracksInfo" Spacing="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Найдено треков: "/>
+                    <Label x:Name="TracksFoundCount"
+                           Text="" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" IsVisible="False" x:Name="TracksExistingLayout">
+                    <Label Text="Уже хранится: " />
+                    <Label x:Name="TracksExistingCount"
+                           Text="" />
+                </StackLayout>
+                <StackLayout x:Name="SearchResultsContainer">
+                    
+                </StackLayout>
+                <Editor x:Name="DownloadInfo"
+                       Text=""
+                        IsReadOnly="True"
+                        HeightRequest="200"/>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="DownloadProgressInfo" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
