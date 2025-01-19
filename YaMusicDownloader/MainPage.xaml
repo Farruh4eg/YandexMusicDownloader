@@ -18,18 +18,26 @@
                         Text="Получить токен"
                         Clicked="GetToken" />
             </StackLayout>
+<<<<<<< HEAD
 
             <StackLayout x:Name="Search"
                          Orientation="Horizontal"
                          Spacing="5">
+=======
+            <StackLayout x:Name="Search"
+                         Spacing="15">
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                 <Entry x:Name="SearchTitle"
                        HorizontalOptions="FillAndExpand" />
                 <Button x:Name="SearchBtn"
                         Text="Поиск"
                         Clicked="SearchTrack"
                         WidthRequest="150" />
+<<<<<<< HEAD
             </StackLayout>
             <StackLayout Spacing="15">
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                 <Button x:Name="DownloadLiked"
                         Text="Скачать любимые треки"
                         Clicked="DownloadLikedTracks"
@@ -38,6 +46,7 @@
                         Text="Скачать текущий трек"
                         Clicked="DownloadCurrentTrack"
                         IsEnabled="False" />
+<<<<<<< HEAD
                 <Button x:Name="RecognizeTrackBtn"
                         Text="Распознать трек"
                         Clicked="RecognizeTrack" />
@@ -63,11 +72,22 @@
                 <StackLayout Orientation="Horizontal"
                              IsVisible="False"
                              x:Name="TracksExistingLayout">
+=======
+            </StackLayout>
+            <StackLayout x:Name="DownloadingTracksInfo" Spacing="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Найдено треков: "/>
+                    <Label x:Name="TracksFoundCount"
+                           Text="" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" IsVisible="False" x:Name="TracksExistingLayout">
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                     <Label Text="Уже хранится: " />
                     <Label x:Name="TracksExistingCount"
                            Text="" />
                 </StackLayout>
                 <StackLayout x:Name="SearchResultsContainer">
+<<<<<<< HEAD
                 </StackLayout>
                 <Editor x:Name="DownloadInfo"
                         Text=""
@@ -87,6 +107,18 @@
                              IsVisible="False"
                              HorizontalOptions="FillAndExpand" />
             </StackLayout>
+=======
+                    
+                </StackLayout>
+                <Editor x:Name="DownloadInfo"
+                       Text=""
+                        IsReadOnly="True"
+                        HeightRequest="200"/>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="DownloadProgressInfo" />
+            </StackLayout>
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
         </VerticalStackLayout>
     </ScrollView>
 

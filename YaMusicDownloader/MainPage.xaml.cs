@@ -1,14 +1,24 @@
 ﻿using System.Diagnostics;
+<<<<<<< HEAD
 using System.Security.Cryptography;
 using System.Text;
 using CommunityToolkit.Maui.Storage;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
+=======
+using CommunityToolkit.Maui.Storage;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 using Yandex.Music.Api.Extensions.API;
 using Yandex.Music.Api.Models.Common;
 using Yandex.Music.Api.Models.Track;
 using Yandex.Music.Client;
+<<<<<<< HEAD
+=======
+using NLog;
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 
 namespace YaMusicDownloader
 {
@@ -17,6 +27,7 @@ namespace YaMusicDownloader
         YandexMusicClientAsync client;
         private static string token;
         private static readonly HttpClient httpClient = new HttpClient();
+<<<<<<< HEAD
         static Dictionary<string, string> headers;
         private static string oauthUrl = "https://oauth.yandex.ru/authorize?client_id=39ce9f16b5e5474cb94ac9a663c92f1e&response_type=token&scope=music%3Acontent&scope=music%3Aread&scope=music%3Awrite&redirect_uri=http://localhost:9999/token";
         private static string SECRET = "kzqU4XhfCaY6B6JTHODeq5";
@@ -26,6 +37,12 @@ namespace YaMusicDownloader
         private static int totalTracksToDownload = 0;
         private static int downloadedTracks = 0;
 
+=======
+        private static string oauthUrl = "https://oauth.yandex.ru/authorize?client_id=39ce9f16b5e5474cb94ac9a663c92f1e&response_type=token&scope=music%3Acontent&scope=music%3Aread&scope=music%3Awrite&redirect_uri=http://localhost:9999/token";
+
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
         public MainPage()
         {
             InitializeComponent();
@@ -137,11 +154,14 @@ namespace YaMusicDownloader
             {
                 client = new YandexMusicClientAsync();
                 await client.Authorize(token);
+<<<<<<< HEAD
                 headers = new Dictionary<string, string>
         {
             { "Authorization", $"OAuth {token}" },
             { "X-Yandex-Music-Client", "YandexMusicDesktopAppWindows/5.35.0" }
         };
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
             }
             catch (Exception ex)
             {
@@ -154,8 +174,11 @@ namespace YaMusicDownloader
             DownloadInfo.Text = "";
             DownloadLiked.IsEnabled = false;
             DownloadLiked.Text = "Запрашивается";
+<<<<<<< HEAD
             totalTracksToDownload = 0;
             downloadedTracks = 0;
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 
             var result = await FolderPicker.Default.PickAsync();
 
@@ -169,26 +192,39 @@ namespace YaMusicDownloader
                         var tracks = await client.GetLikedTracks();
                         int tracksCount = tracks.Count;
 
+<<<<<<< HEAD
                         var existingFiles = new HashSet<string>(Directory.GetFiles(result.Folder.Path).Select(file => Path.GetFileNameWithoutExtension(file)));
+=======
+                        var existingFiles = new HashSet<string>(Directory.GetFiles(result.Folder.Path).Select(file => Path.GetFileName(file)));
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                         int existingFilesCounter = 0;
 
                         await UpdateUI(() =>
                         {
                             TracksFoundCount.Text = tracksCount.ToString();
                             TracksExistingLayout.IsVisible = true;
+<<<<<<< HEAD
                             OverallDownloadProgressBar.IsVisible = true;
                             OverallDownloadProgressBar.Progress = 0;
                         });
 
                         totalTracksToDownload = tracksCount;
 
+=======
+                        });
+
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                         foreach (var track in tracks)
                         {
                             await UpdateUI(() => TracksExistingCount.Text = $"{existingFilesCounter}");
                             var artistsNameList = new List<string>();
                             track.Artists.ForEach(artist => artistsNameList.Add(artist.Name));
                             string artistsJoined = String.Join(", ", artistsNameList);
+<<<<<<< HEAD
                             string trackFileName = String.Concat($"{artistsJoined} - {track.Title}".Split(invalidFileNameChars));
+=======
+                            string trackFileName = String.Concat($"{artistsJoined} - {track.Title}".Split(invalidFileNameChars)) + ".mp3";
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 
                             if (existingFiles.Contains(trackFileName))
                             {
@@ -205,9 +241,12 @@ namespace YaMusicDownloader
                             {
                                 logger.Error(ex, $"Error downloading track '{track.Title}'");
                             }
+<<<<<<< HEAD
 
                             downloadedTracks++;
                             await UpdateUI(() => OverallDownloadProgressBar.Progress = (double)downloadedTracks / totalTracksToDownload);
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                         }
 
                         await UpdateUI(() => DownloadInfo.Text += "Скачивание ваших треков завершено.\n");
@@ -273,6 +312,7 @@ namespace YaMusicDownloader
             }
         }
 
+<<<<<<< HEAD
         private async void RecognizeTrack(object sender, EventArgs e)
         {
             IStatusMessage statusMessage = new StatusMessage();
@@ -418,6 +458,29 @@ namespace YaMusicDownloader
                 {
                     httpClient.DefaultRequestHeaders.Clear();
                 }
+=======
+        private async Task DownloadTrack(YTrack track, string path)
+        {
+            try
+            {
+                Uri trackLink = new Uri(await track.GetLinkAsync());
+                var artistsNameList = new List<string>();
+                track.Artists.ForEach(artist => artistsNameList.Add(artist.Name));
+                string artistsJoined = String.Join(", ", artistsNameList);
+                string trackFileName = String.Concat($"{artistsJoined} - {track.Title}".Split(Path.GetInvalidFileNameChars())) + ".mp3";
+
+                string filePath = Path.Combine(path, trackFileName);
+
+                var trackData = await httpClient.GetByteArrayAsync(trackLink);
+                await UpdateUI(() => DownloadInfo.Text += $"Скачивается: {artistsJoined} - {track.Title}\n");
+
+                await File.WriteAllBytesAsync(filePath, trackData);
+                DownloadProgressInfo.Text = $"Скачано: {artistsJoined} - {track.Title}";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error downloading track");
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
             }
         }
 
@@ -496,11 +559,14 @@ namespace YaMusicDownloader
             }
         }
 
+<<<<<<< HEAD
         private void FlacCheckClicked(object sender, EventArgs e)
         {
             DownloadFlac.IsChecked = !DownloadFlac.IsChecked;
         }
 
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
         public class YProductTypeConverter : JsonConverter<YProductType>
         {
             public override YProductType ReadJson(JsonReader reader, Type objectType, YProductType existingValue, bool hasExistingValue, JsonSerializer serializer)
@@ -519,6 +585,7 @@ namespace YaMusicDownloader
                 writer.WriteValue(value.ToString());
             }
         }
+<<<<<<< HEAD
 
         public class StatusMessage : IStatusMessage
         {
@@ -527,5 +594,7 @@ namespace YaMusicDownloader
                 Debug.WriteLine(message);
             }
         }
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
     }
 }

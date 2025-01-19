@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
+<<<<<<< HEAD
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaMusicDownloader", "YaMusicDownloader\YaMusicDownloader.csproj", "{1AFE9F09-6171-4354-A746-A7D2736BED03}"
@@ -13,10 +14,21 @@ Global
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
+=======
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaMusicDownloader", "YaMusicDownloader\YaMusicDownloader.csproj", "{1AFE9F09-6171-4354-A746-A7D2736BED03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+<<<<<<< HEAD
 		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Debug|x86.ActiveCfg = Debug|x86
 		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Debug|x86.Build.0 = Debug|x86
 		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,6 +41,10 @@ Global
 		{13E3DE65-F98E-4C91-BF3D-9A07797A9963}.Release|Any CPU.ActiveCfg = Release
 		{13E3DE65-F98E-4C91-BF3D-9A07797A9963}.Release|x86.ActiveCfg = Release
 		{13E3DE65-F98E-4C91-BF3D-9A07797A9963}.Release|x86.Build.0 = Release
+=======
+		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AFE9F09-6171-4354-A746-A7D2736BED03}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

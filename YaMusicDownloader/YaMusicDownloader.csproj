@@ -69,7 +69,10 @@
 		<PackageReference Include="KM.Yandex.Music.Client" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+<<<<<<< HEAD
 		<PackageReference Include="NAudio" Version="2.2.0" />
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 		<PackageReference Include="NLog" Version="5.3.4" />
 	</ItemGroup>
 
@@ -79,6 +82,7 @@
 	  </None>
 	</ItemGroup>
 
+<<<<<<< HEAD
 	<ItemGroup>
 		<None Update="tools\ffmpeg.exe">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -86,4 +90,6 @@
 	</ItemGroup>
 
 
+=======
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
 </Project>

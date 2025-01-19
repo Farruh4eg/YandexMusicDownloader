@@ -43,7 +43,11 @@ namespace YaMusicDownloader
                                         body: JSON.stringify({ access_token: accessToken })
                                     })
                                     .then(() => {
+<<<<<<< HEAD
                                         document.body.innerHTML = 'Access token received successfully! You can close this window now.';
+=======
+                                        document.body.innerHTML = 'Access token received successfully!';
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                                     })
                                     .catch(() => {
                                         document.body.innerHTML = 'Failed to send access token to the server.';
@@ -55,7 +59,11 @@ namespace YaMusicDownloader
                         </script>
                     </head>
                     <body>
+<<<<<<< HEAD
                         <h1>Processing Access Token... (if you see this for too long, you may be using a mobile device. If that's the case, then please use Windows version)</h1>
+=======
+                        <h1>Processing Access Token...</h1>
+>>>>>>> 37d60fc36da109df882a848f23ef29274aae6ee9
                     </body>
                     </html>";
                     byte[] data = Encoding.UTF8.GetBytes(html);
